@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Parser Web App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px auto;
+      max-width: 700px;
+      background: #fafbfc;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 1em;
+      background: #fff;
+      border: 1px solid #bbb;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    button {
+      display: block;
+      margin: 10px auto 20px auto;
+      padding: 10px 24px;
+      font-size: 1em;
+      background: #0070f3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    .output {
+      background: #f4f5f7;
+      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      padding: 20px;
+      min-height: 100px;
+      font-size: 0.98em;
+      overflow-x: auto;
+    }
+    .tree ul {
+      list-style: none;
+      margin-left: 20px;
+      padding-left: 0;
+      border-left: 1px dashed #bbb;
+    }
+    .tree li {
+      margin: 2px 0;
+      position: relative;
+      cursor: pointer;
+    }
+    .tree .collapsed > ul {
+      display: none;
+    }
+    .tree .tag {
+      color: #0070f3;
+      font-weight: bold;
+    }
+    .tree .attribute {
+      color: #a626a4;
+    }
+    .tree .value {
+      color: #50a14f;
+    }
+    .tree .text {
+      color: #444;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML Parser</h1>
+  <textarea id="input" placeholder="Paste or type HTML here..."></textarea>
+  <button id="parseBtn">Parse</button>
+  <div id="output" class="output"></div>
+
+  <script>
+    function nodeToTree(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent.trim();
+        if (!text) return null;
+        return {
+          type: 'text',
+          content: text
+        };
+      }
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const attrs = Array.from(node.attributes).map(attr => ({
+          name: attr.name,
+          value: attr.value
+        }));
+        const children = Array.from(node.childNodes)
+          .map(nodeToTree)
+          .filter(Boolean);
+        return {
+          type: 'element',
+          tag: node.tagName.toLowerCase(),
+          attributes: attrs,
+          children: children
+        };
+      }
+      return null;
+    }
+
+    function renderTree(node) {
+      if (!node) return '';
+      if (node.type === 'text') {
+        return `<span class="text">${escapeHtml(node.content)}</span>`;
+      }
+      let attrs = '';
+      if (node.attributes && node.attributes.length > 0) {
+        attrs = ' ' + node.attributes.map(attr =>
+          `<span class="attribute">${attr.name}</span>=<span class="value">"${escapeHtml(attr.value)}"</span>`
+        ).join(' ');
+      }
+      let children = '';
+      if (node.children && node.children.length > 0) {
+        children = `<ul>${node.children.map(renderTreeLi).join('')}</ul>`;
+      }
+      return `<span class="tag">&lt;${node.tag}${attrs}&gt;</span>${children}`;
+    }
+
+    function renderTreeLi(node) {
+      if (!node) return '';
+      if (node.type === 'text') {
+        return `<li>${renderTree(node)}</li>`;
+      }
+      let attrs = '';
+      if (node.attributes && node.attributes.length > 0) {
+        attrs = ' ' + node.attributes.map(attr =>
+          `<span class="attribute">${attr.name}</span>=<span class="value">"${escapeHtml(attr.value)}"</span>`
+        ).join(' ');
+      }
+      let children = '';
+      if (node.children && node.children.length > 0) {
+        children = `<ul>${node.children.map(renderTreeLi).join('')}</ul>`;
+      }
+      return `<li><span class="tag">&lt;${node.tag}${attrs}&gt;</span>${children}</li>`;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"/g, function(tag) {
+        const chars = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;'
+        };
+        return chars[tag] || tag;
+      });
+    }
+
+    // Collapsible tree (optional enhancement)
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('tag')) {
+        const li = e.target.closest('li');
+        if (li) li.classList.toggle('collapsed');
+      }
+    });
+
+    document.getElementById('parseBtn').onclick = function() {
+      const input = document.getElementById('input').value;
+      let doc;
+      try {
+        doc = new DOMParser().parseFromString(input, 'text/html');
+      } catch {
+        document.getElementById('output').innerHTML = '<span style="color:red;">Invalid HTML</span>';
+        return;
+      }
+      const tree = nodeToTree(doc.body);
+      document.getElementById('output').innerHTML = `<div class="tree"><ul>${renderTreeLi(tree)}</ul></div>`;
+    };
+  </script>
+</body>
+</html>
