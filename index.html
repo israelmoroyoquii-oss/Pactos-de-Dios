@@ -1,189 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HTML Parser Web App</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 40px auto;
-      max-width: 700px;
-      background: #fafbfc;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2em;
-    }
-    textarea {
-      width: 100%;
-      min-height: 120px;
-      padding: 10px;
-      font-family: monospace;
-      font-size: 1em;
-      background: #fff;
-      border: 1px solid #bbb;
-      margin-bottom: 10px;
-      border-radius: 4px;
-      resize: vertical;
-    }
-    button {
-      display: block;
-      margin: 10px auto 20px auto;
-      padding: 10px 24px;
-      font-size: 1em;
-      background: #0070f3;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    button:hover {
-      background: #005bb5;
-    }
-    .output {
-      background: #f4f5f7;
-      border: 1px solid #e1e4e8;
-      border-radius: 4px;
-      padding: 20px;
-      min-height: 100px;
-      font-size: 0.98em;
-      overflow-x: auto;
-    }
-    .tree ul {
-      list-style: none;
-      margin-left: 20px;
-      padding-left: 0;
-      border-left: 1px dashed #bbb;
-    }
-    .tree li {
-      margin: 2px 0;
-      position: relative;
-      cursor: pointer;
-    }
-    .tree .collapsed > ul {
-      display: none;
-    }
-    .tree .tag {
-      color: #0070f3;
-      font-weight: bold;
-    }
-    .tree .attribute {
-      color: #a626a4;
-    }
-    .tree .value {
-      color: #50a14f;
-    }
-    .tree .text {
-      color: #444;
-      font-style: italic;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Pactos De Dios</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración para usar la fuente Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d111c; /* Fondo oscuro */
+        }
+        /* Estilo para las tarjetas */
+        .covenant-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .covenant-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
-<body>
-  <h1>HTML Parser</h1>
-  <textarea id="input" placeholder="Paste or type HTML here..."></textarea>
-  <button id="parseBtn">Parse</button>
-  <div id="output" class="output"></div>
+<body class="min-h-screen text-white">
 
-  <script>
-    function nodeToTree(node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const text = node.textContent.trim();
-        if (!text) return null;
-        return {
-          type: 'text',
-          content: text
+    <header class="py-10 px-4 sm:px-6 lg:px-8 bg-[#1e293b]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#38bdf8]">
+                Los Pactos De Dios
+            </h1>
+            <p class="mt-2 text-lg text-gray-300">
+                El Plan Imparable de Dios en 5 Estaciones.
+            </p>
+        </div>
+    </header>
+
+    <main class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Pacto 1: NOÉ -->
+            <div class="covenant-card bg-[#1a2333] p-6 rounded-xl border-t-4 border-t-green-400">
+                <span class="text-4xl font-black text-green-400 block mb-3">#1</span>
+                <h2 class="text-2xl font-bold mb-2">PACTO NOÉ (Universal)</h2>
+                <p class="text-sm italic text-gray-400 mb-4">La Promesa de No-Destrucción. Un pacto UNILATERAL.</p>
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold text-gray-200">Enfoque: Dios restablece la relación con la creación.</p>
+                    <p class="text-xs p-2 bg-[#2c3749] rounded-lg border border-gray-600">
+                        <strong class="text-green-400">Génesis 9:11, 13:</strong> "Estableceré mi pacto con vosotros, y no será exterminada ya más toda carne con aguas de diluvio..."
+                    </p>
+                    <p class="text-sm font-bold text-green-400 pt-1">
+                        LECCIÓN: DIOS ES FIEL SIEMPRE. Su plan no se detuvo por el diluvio.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pacto 2: ABRAHAM -->
+            <div class="covenant-card bg-[#1a2333] p-6 rounded-xl border-t-4 border-t-blue-400">
+                <span class="text-4xl font-black text-blue-400 block mb-3">#2</span>
+                <h2 class="text-2xl font-bold mb-2">PACTO ABRAHAM (Nación)</h2>
+                <p class="text-sm italic text-gray-400 mb-4">La Promesa de la Familia de la Fe.</p>
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold text-gray-200">Enfoque: De una nación, todas las familias de la tierra serán benditas (El spoiler de Jesús).</p>
+                    <p class="text-xs p-2 bg-[#2c3749] rounded-lg border border-gray-600">
+                        <strong class="text-blue-400">Génesis 12:2-3:</strong> "...serán benditas en ti todas las familias de la tierra."
+                    </p>
+                    <p class="text-sm font-bold text-blue-400 pt-1">
+                        LECCIÓN: DIOS TIENE UN PROPÓSITO GLOBAL. Eres parte de la bendición prometida.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pacto 3: LEY (Antes MOSAICO) -->
+            <div class="covenant-card bg-[#1a2333] p-6 rounded-xl border-t-4 border-t-red-500">
+                <span class="text-4xl font-black text-red-500 block mb-3">#3</span>
+                <h2 class="text-2xl font-bold mb-2">PACTO LEY (Las Reglas)</h2>
+                <p class="text-sm italic text-gray-400 mb-4">El Contrato de la Ley y las Reglas. CONDICIONAL.</p>
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold text-gray-200">Enfoque: Demostró que el hombre no puede cumplirlo. Nos muestra el pecado.</p>
+                    <p class="text-xs p-2 bg-[#2c3749] rounded-lg border border-gray-600">
+                        <strong class="text-red-500">Gálatas 3:24 (RV60):</strong> "...la ley ha sido nuestro **ayo**, para llevarnos a Cristo..."
+                    </p>
+                    <p class="text-sm font-bold text-red-500 pt-1">
+                        LECCIÓN: LA LEY ES BUENA, PERO NO SALVA. Muestra nuestra incapacidad y nos lleva a Cristo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pacto 4: DAVID -->
+            <div class="covenant-card bg-[#1a2333] p-6 rounded-xl border-t-4 border-t-purple-400">
+                <span class="text-4xl font-black text-purple-400 block mb-3">#4</span>
+                <h2 class="text-2xl font-bold mb-2">PACTO DAVID (Reino)</h2>
+                <p class="text-sm italic text-gray-400 mb-4">La Promesa del Trono Eterno.</p>
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold text-gray-200">Enfoque: De la descendencia de David saldrá un Rey cuyo trono será eterno.</p>
+                    <p class="text-xs p-2 bg-[#2c3749] rounded-lg border border-gray-600">
+                        <strong class="text-purple-400">2 Samuel 7:12-13:</strong> "Y yo afirmaré para siempre el trono de su reino."
+                    </p>
+                    <p class="text-sm font-bold text-purple-400 pt-1">
+                        LECCIÓN: JESÚS ES EL JEFE ETERNO. El plan termina con un Rey, y ese Rey es Jesús.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pacto 5: NUEVO PACTO -->
+            <div class="covenant-card bg-[#1a2333] p-6 rounded-xl border-t-4 border-t-yellow-400 md:col-span-2 lg:col-span-1 mx-auto w-full max-w-sm lg:max-w-none">
+                <span class="text-4xl font-black text-yellow-400 block mb-3">#5</span>
+                <h2 class="text-2xl font-bold mb-2">EL NUEVO PACTO (Gracia)</h2>
+                <p class="text-sm italic text-gray-400 mb-4">El Contrato Definitivo: La Sangre de Jesús.</p>
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold text-gray-200">Enfoque: Ley escrita en el corazón, perdón completo y acceso directo a Dios.</p>
+                    <p class="text-xs p-2 bg-[#2c3749] rounded-lg border border-gray-600">
+                        <strong class="text-yellow-400">Lucas 22:20 (Cumplimiento):</strong> "Esta copa es el nuevo pacto en mi sangre..."
+                    </p>
+                    <p class="text-sm font-bold text-yellow-400 pt-1">
+                        LECCIÓN: ¡EL REGALO MÁS CHINGÓN! No es por lo que haces (Ley), sino por lo que **Él ya hizo** (Sangre).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cierre de la sección -->
+            <div class="md:col-span-2 lg:col-span-3 text-center pt-8">
+                <p class="text-xl font-semibold text-[#38bdf8]">
+                    El Nuevo Pacto es la meta. Es tu nueva realidad.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Módulo Gemini API: Pregunta al Tío Pactos -->
+        <div class="max-w-4xl mx-auto mt-16 p-8 bg-[#1e293b] rounded-xl shadow-2xl border-2 border-[#38bdf8]">
+            <h2 class="text-2xl font-extrabold text-center text-white mb-6">
+                Pregúntale al Tío Pactos 🤓
+            </h2>
+            <p class="text-gray-300 text-center mb-6">
+                Selecciona un Pacto y pregunta cómo aplicarlo a un problema real de tu vida (amistad, estudios, etc.).
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <!-- Selector de Pacto -->
+                <div>
+                    <label for="pacto-select" class="block text-sm font-medium text-gray-300 mb-1">Pacto a Consultar:</label>
+                    <select id="pacto-select" class="w-full p-3 bg-[#2c3749] text-white rounded-lg border border-gray-600 focus:ring-[#38bdf8] focus:border-[#38bdf8]">
+                        <option value="PACTO NOÉ">1. PACTO NOÉ (Fidelidad de Dios)</option>
+                        <option value="PACTO ABRAHAM">2. PACTO ABRAHAM (Propósito Global)</option>
+                        <!-- Titulo actualizado de Mosaico a Ley -->
+                        <option value="PACTO LEY (Las Reglas)">3. PACTO LEY (La Ley como Espejo)</option>
+                        <option value="PACTO DAVID">4. PACTO DAVID (Jesús es Rey)</option>
+                        <option value="EL NUEVO PACTO" selected>5. EL NUEVO PACTO (Gracia y Perdón)</option>
+                    </select>
+                </div>
+
+                <!-- Campo de Pregunta -->
+                <div>
+                    <label for="pregunta-input" class="block text-sm font-medium text-gray-300 mb-1">Tu Pregunta/Problema:</label>
+                    <input type="text" id="pregunta-input" placeholder="Ej: ¿Cómo perdono a un amigo que me falló?" class="w-full p-3 bg-[#2c3749] text-white rounded-lg border border-gray-600 focus:ring-[#38bdf8] focus:border-[#38bdf8]" maxlength="100">
+                </div>
+            </div>
+
+            <button id="generar-btn" class="w-full py-3 bg-yellow-500 text-gray-900 font-bold rounded-lg hover:bg-yellow-400 transition duration-200 flex items-center justify-center">
+                <svg id="loader" class="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="button-text">Generar Consejo ✨</span>
+            </button>
+
+            <!-- Área de Resultado -->
+            <div id="resultado-div" class="mt-8 p-4 bg-[#2c3749] rounded-xl border-l-4 border-l-yellow-500 hidden">
+                <p class="text-sm font-semibold text-yellow-500 mb-2">Respuesta del Tío Pactos:</p>
+                <p id="aplicacion-text" class="text-gray-100 italic"></p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-6 bg-[#1a2333] mt-10">
+        <p class="text-sm text-gray-400">
+            Material de apoyo para el estudio de la Fe.
+        </p>
+    </footer>
+
+    <!-- Scripts de Firebase y Lógica de la API -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        
+        // =========================================================
+        // >>> CONFIGURACIÓN SENCILLA PARA WEBS EXTERNAS <<<
+        // 1. **MANDATORIO:** Tu clave de API de Gemini ya está insertada.
+        // 2. **OPCIONAL:** Si usas Firebase (Firestore) para guardar datos, inserta tu config. Si no, déjalo en null.
+        // =========================================================
+
+        const GEMINI_API_KEY = "AIzaSyAXBkM6gZ4cbj-0ub6gUWB7VJOPY-ieZQ4"; // CLAVE DE API INSERTADA
+        const firebaseConfig = null; 
+
+        // --- Variables de Entorno (Fallback para el ambiente Canvas) ---
+        // Usamos variables globales si están definidas (como en Canvas), o usamos la configuración local.
+        const configToUse = firebaseConfig || (typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null);
+        const apiKeyToUse = (typeof __initial_auth_token === 'undefined' ? GEMINI_API_KEY : ''); // Si estamos en Canvas, la clave se inyecta automáticamente.
+
+        // API Configuration
+        const MODEL_NAME = 'gemini-2.5-flash-preview-09-2025';
+        // Usamos la clave inyectada por el entorno si existe, o la clave definida localmente.
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${apiKeyToUse}`;
+        const MAX_RETRIES = 5;
+
+        // Inicialización MÍNIMA de Firebase (Para ambientes que la requieren)
+        if (configToUse) {
+            const app = initializeApp(configToUse);
+            const auth = getAuth(app);
+            // Solo para evitar errores, iniciamos sesión anónimamente si se usa Firebase.
+            signInAnonymously(auth).catch(error => console.error("Firebase Auth failed:", error));
+        }
+
+        // Helper function for exponential backoff
+        const fetchWithRetry = async (url, options, retries = 0) => {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    // Si el error es 429 (Too Many Requests), intentamos reintentar.
+                    if (response.status === 429 && retries < MAX_RETRIES) {
+                        const delay = Math.pow(2, retries) * 1000;
+                        console.warn(`Fetch failed (Status ${response.status}). Retrying in ${delay / 1000}s...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithRetry(url, options, retries + 1);
+                    }
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response;
+            } catch (error) {
+                if (retries < MAX_RETRIES) {
+                    const delay = Math.pow(2, retries) * 1000;
+                    console.warn(`Fetch failed. Retrying in ${delay / 1000}s...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithRetry(url, options, retries + 1);
+                }
+                throw error;
+            }
         };
-      }
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        const attrs = Array.from(node.attributes).map(attr => ({
-          name: attr.name,
-          value: attr.value
-        }));
-        const children = Array.from(node.childNodes)
-          .map(nodeToTree)
-          .filter(Boolean);
-        return {
-          type: 'element',
-          tag: node.tagName.toLowerCase(),
-          attributes: attrs,
-          children: children
-        };
-      }
-      return null;
-    }
 
-    function renderTree(node) {
-      if (!node) return '';
-      if (node.type === 'text') {
-        return `<span class="text">${escapeHtml(node.content)}</span>`;
-      }
-      let attrs = '';
-      if (node.attributes && node.attributes.length > 0) {
-        attrs = ' ' + node.attributes.map(attr =>
-          `<span class="attribute">${attr.name}</span>=<span class="value">"${escapeHtml(attr.value)}"</span>`
-        ).join(' ');
-      }
-      let children = '';
-      if (node.children && node.children.length > 0) {
-        children = `<ul>${node.children.map(renderTreeLi).join('')}</ul>`;
-      }
-      return `<span class="tag">&lt;${node.tag}${attrs}&gt;</span>${children}`;
-    }
+        // --- Gemini API Logic ---
+        document.getElementById('generar-btn').addEventListener('click', async () => {
+            const pacto = document.getElementById('pacto-select').value;
+            const pregunta = document.getElementById('pregunta-input').value.trim();
+            const resultadoDiv = document.getElementById('resultado-div');
+            const aplicacionText = document.getElementById('aplicacion-text');
+            const button = document.getElementById('generar-btn');
+            const buttonText = document.getElementById('button-text');
+            const loader = document.getElementById('loader');
 
-    function renderTreeLi(node) {
-      if (!node) return '';
-      if (node.type === 'text') {
-        return `<li>${renderTree(node)}</li>`;
-      }
-      let attrs = '';
-      if (node.attributes && node.attributes.length > 0) {
-        attrs = ' ' + node.attributes.map(attr =>
-          `<span class="attribute">${attr.name}</span>=<span class="value">"${escapeHtml(attr.value)}"</span>`
-        ).join(' ');
-      }
-      let children = '';
-      if (node.children && node.children.length > 0) {
-        children = `<ul>${node.children.map(renderTreeLi).join('')}</ul>`;
-      }
-      return `<li><span class="tag">&lt;${node.tag}${attrs}&gt;</span>${children}</li>`;
-    }
+            if (pregunta.length < 5) {
+                aplicacionText.textContent = "¡Escribe una pregunta más específica!";
+                resultadoDiv.classList.remove('hidden');
+                return;
+            }
 
-    function escapeHtml(text) {
-      return text.replace(/[&<>"/g, function(tag) {
-        const chars = {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;'
-        };
-        return chars[tag] || tag;
-      });
-    }
+            // UI Feedback: Loading
+            buttonText.textContent = 'Generando...';
+            button.disabled = true;
+            loader.classList.remove('hidden');
+            resultadoDiv.classList.add('hidden');
+            aplicacionText.textContent = '';
 
-    // Collapsible tree (optional enhancement)
-    document.addEventListener('click', function(e) {
-      if (e.target && e.target.classList.contains('tag')) {
-        const li = e.target.closest('li');
-        if (li) li.classList.toggle('collapsed');
-      }
-    });
 
-    document.getElementById('parseBtn').onclick = function() {
-      const input = document.getElementById('input').value;
-      let doc;
-      try {
-        doc = new DOMParser().parseFromString(input, 'text/html');
-      } catch {
-        document.getElementById('output').innerHTML = '<span style="color:red;">Invalid HTML</span>';
-        return;
-      }
-      const tree = nodeToTree(doc.body);
-      document.getElementById('output').innerHTML = `<div class="tree"><ul>${renderTreeLi(tree)}</ul></div>`;
-    };
-  </script>
+            // System Instruction to guide the LLM's role and tone
+            const systemPrompt = `Actúa como un mentor cristiano para jóvenes de 17-21 años. Tu tarea es tomar un Pacto Bíblico y una pregunta de la vida real, y ofrecer un consejo de aplicación extremadamente práctico, motivador y breve (máximo 3 frases concisas). Asegúrate de que el consejo esté teológicamente alineado con el Pacto seleccionado. Usa un tono moderno, amigable, y sin sermones.`;
+
+            const userQuery = `Pacto: ${pacto}. Pregunta de la vida real: ${pregunta}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                // Si la clave no está definida (y no estamos en Canvas), mostramos error.
+                if (!apiKeyToUse && typeof __initial_auth_token === 'undefined') {
+                     aplicacionText.textContent = 'ERROR: No se ha encontrado la clave de API. Por favor, asegúrate de que esté configurada.';
+                     resultadoDiv.classList.remove('hidden');
+                     return;
+                }
+                
+                const response = await fetchWithRetry(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    aplicacionText.textContent = text;
+                } else {
+                    aplicacionText.textContent = 'No pude generar la respuesta. Intenta con otra pregunta.';
+                }
+
+                resultadoDiv.classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Error al llamar a la API de Gemini:", error);
+                aplicacionText.textContent = '¡Ups! Hubo un error al conectar con el servidor. Inténtalo de nuevo.';
+                resultadoDiv.classList.remove('hidden');
+            } finally {
+                // UI Feedback: Done
+                buttonText.textContent = 'Generar Consejo ✨';
+                button.disabled = false;
+                loader.classList.add('hidden');
+            }
+        });
+    </script>
+
 </body>
 </html>
